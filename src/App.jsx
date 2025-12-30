@@ -9,17 +9,19 @@ import Signup from "./pages/signup";
 import CanvasPage from "./pages/canvasPage"; 
 import Dashboard from "./pages/dashboard";
 import UserContextProvider from "./context/UserContextProvider";
+import { FirebaseProvider } from "./firebase/context/firebase";
 
 
 
 function App() {
   return (
+    <FirebaseProvider>
     <UserContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard/:userId" element={<Dashboard />} />
           <Route
             path="/canvas/:portfolioId"
             element={
@@ -31,6 +33,7 @@ function App() {
         </Routes>
       </BrowserRouter>
     </UserContextProvider>
+    </FirebaseProvider>
   );
 }
 

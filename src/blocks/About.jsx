@@ -1,4 +1,4 @@
-export function AboutBlock({ data, onChange }) {
+export function AboutBlock({ data, onChange }) {//sends updates back to the parent using onChange
   const update = (patch) => onChange({ ...data, ...patch });
 
   return (
@@ -7,6 +7,7 @@ export function AboutBlock({ data, onChange }) {
         className="h-16 w-full rounded border border-slate-300 px-2 py-1"
         placeholder="Short introduction"
         value={data.intro ?? ""}
+        //?? "" : nullish coalescing:Prevents React’s controlled/uncontrolled warning
         onChange={(e) => update({ intro: e.target.value })}
       />
       <textarea

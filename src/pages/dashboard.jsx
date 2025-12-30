@@ -1,26 +1,35 @@
 // src/Dashboard.jsx
+import { useParams } from 'react-router-dom';
 import { FiGrid, FiFolder, FiDownload, FiSettings } from "react-icons/fi";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, doc, onSnapshot } from "firebase/firestore";
 import { db,auth } from "../firebase/firebaseConfig";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
+import { useContext,useEffect,useState } from "react";
 import UserContext from "../context/UserContext";
 
 
 export default function Dashboard() {
+  const { userId } = useParams();
 
-const {user}=useContext(UserContext);
+  const [userData, setUserData] = useState(null);
 
-let displayWelcomeText;
-if (!user || !user.username){
-   displayWelcomeText="Welcome User!"
-}else{
-   displayWelcomeText=`Welcome ${user.username}!`;
-}
+  const navigate = useNavigate();
 
-const navigate = useNavigate();
+  useEffect(() => {
+      if (userId) {
+        const userRef = doc(db, 'users', userId);
+        const unsubscribe = onSnapshot(userRef, (docSnap) => {
+          if (docSnap.exists()) {
+            setUserData(docSnap.data());
+          }
+        });
+        return unsubscribe;
+      }
+  }, [userId]);
 
-const handleNewProject = async () => {
+
+  
+  const handleNewProject = async () => {
     const user = auth.currentUser;
     if (!user) {
       navigate("/login")//  redirect to login
@@ -87,8 +96,8 @@ const handleNewProject = async () => {
         {/* Top bar */}
         <header className="flex flex-wrap items-center justify-between gap-4">
           <div>
-            <h2 className="text-xl md:text-4xl font-semibold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
-              {displayWelcomeText}
+            <h2 className="text-xl p-4 md:text-4xl font-semibold bg-gradient-to-r from-pink-500 via-fuchsia-500 to-indigo-500 bg-clip-text text-transparent">
+              Welcome, {userData?.username || 'User'}!
             </h2>
             <p className="text-xs md:text-sm text-slate-500">
               Track projects, exports and recent activity at a glance.

@@ -1,8 +1,9 @@
 import React, { useState,useContext } from "react";
 import "./login.css";
-import loginUser  from "../firebase/loginUser";         
-import { Link } from "react-router-dom";
+import loginUser  from "../firebase/auth/loginUser";         
 import UserContext from '../context/UserContext'; 
+import { googleAuth } from "../firebase/auth/googleAuth.js";
+import { Link, useNavigate } from "react-router-dom"; 
 
 
 
@@ -11,31 +12,41 @@ export default function Login() {
 
 const [data,setData]=useState({});
 
+const navigate = useNavigate();
+
   const handleInput = (e) =>{
     setData({...data,[e.target.name]:e.target.value});
   }
 
   const {email,password}=data;
 
-  /*const handleSubmit = (e)=>{
-    e.preventDefault();
-    if(!email || !password){
-      console.log("All fields are required");
-      return;
-    } 
-
-    loginUser(email,password);
-  }*/
+  
  const handleSubmit = async (e) => {
-  e.preventDefault();
-
+   e.preventDefault();
+   
   if (!email || !password) {
     console.log("All fields are required");
     return;
   }
+      
+  try {
+    const user = await loginUser( email, password); // Get user back
+    navigate(`/dashboard/${user.uid}`);
+  } catch (error) {
+    console.error("login failed:", error); // Handle errors (e.g., weak password, email exists)
+  }
+}; 
 
-  await loginUser(email, password);
-};
+const handleGoogleLogin=async(e)=>{
+    e.preventDefault();
+    try{
+      const user = await googleAuth(); // Get user back
+      navigate(`/dashboard/${user.uid}`);
+      
+    }catch(error){
+      console.log("error occurred while sign up",error);
+    }
+  }
 
   return (
     <div className="login-container">
@@ -58,13 +69,14 @@ const [data,setData]=useState({});
             className="input-box"
             onChange={handleInput}
           />
-          <p className="signup-text">
          
-        </p>
+        <p className="signup-text">
+          Don't have an account? <Link to ="/signup">Create one</Link>
+          </p>
           <button className="login-btn">Login</button>
         </form>
         <p className="p-2">OR</p>
-        <button  className="login-btn">Login with Google</button>
+        <button  className="login-btn" onClick={handleGoogleLogin}>Login with Google</button>
       </div>
     </div>
   );
