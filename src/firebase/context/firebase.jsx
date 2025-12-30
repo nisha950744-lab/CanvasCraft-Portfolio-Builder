@@ -40,7 +40,10 @@ export const FirebaseProvider = ({ children }) => {
   // undefined = still checking, null = not logged in
 
   useEffect(() => {
+    console.log("FirebaseProvider mounted");
     const unsub = onAuthStateChanged(auth, (firebaseUser) => {
+      console.log("onAuthStateChanged callback", firebaseUser);
+
       setUser(firebaseUser || null);
     });
     return unsub;
@@ -49,6 +52,8 @@ export const FirebaseProvider = ({ children }) => {
   const isLoggedIn = !!user;
 
   const value = { user, isLoggedIn };
+
+  console.log("FirebaseProvider value", value);
 
   return (
     <FirebaseContext.Provider value={value}>
