@@ -10,8 +10,9 @@ import CanvasPage from "./pages/canvasPage";
 import Dashboard from "./pages/dashboard";
 import UserContextProvider from "./context/UserContextProvider";
 import { FirebaseProvider } from "./firebase/context/firebase";
+import ProjectList from "./pages/projectList";
 
-
+/*Route path="/dashboard/:userId" element={<Dashboard />} /> */
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
               </DndProvider>
             }
           />
+          <Route path="/projectList" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
     </UserContextProvider>

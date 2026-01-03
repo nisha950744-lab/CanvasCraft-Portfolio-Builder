@@ -1,18 +1,19 @@
 // CanvasPage.jsx
 import { useState, useEffect,useRef } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
 import Canvas from "../components/Canvas";
 import Toolbar from "../components/Toolbar";
 //import PropertiesPanel from "../components/PropertiesPanel";
 import { auth, db } from "../firebase/firebaseConfig.js";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection,addDoc,serverTimestamp,} from "firebase/firestore";
 import { useAutosave } from "../hooks/useAutosave"; // your autosave hook
 import { useFirebase } from "../firebase/context/firebase";
+import SaveAsModal from "../components/SaveAsModal.jsx";
 
 
 export default function CanvasPage() {
-    const canvasRef = useRef(null);
+  const canvasRef = useRef(null);
 
   const { portfolioId } = useParams();
 
@@ -21,6 +22,38 @@ export default function CanvasPage() {
   const [blocks, setBlocks] = useState([]);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  const [isSaveAsOpen, setIsSaveAsOpen] = useState(false);
+
+  const navigate = useNavigate();
+
+  const openSaveAs = () => setIsSaveAsOpen(true);
+
+  const closeSaveAs = () => setIsSaveAsOpen(false);
+
+    const handleSaveAs = async (title) => {
+    const user = auth.currentUser;
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    try {
+      const projectsRef = collection(db, "users", user.uid, "projects");
+      const docRef = await addDoc(projectsRef, {
+        title,
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp(),
+        blocks,           // latest canvas state
+        status: "draft",
+      }); // new projectId [web:563][web:564]
+
+      closeSaveAs();
+      navigate(`/canvas/${docRef.id}`); // open the new copy
+    } catch (err) {
+      console.error("Save As failed", err);
+    }
+  };
 
   // 1) Load blocks from Firestore once
   useEffect(() => {
@@ -102,7 +135,7 @@ export default function CanvasPage() {
       <aside className="w-56 md:w-64 border-r border-gray-200 bg-gradient-to-r from-pink-500/30 to-blue-500/30 flex flex-col">
         <Sidebar onBlockAdd={addBlock} />
         <div className="mt-4 border-t border-white/40 pt-3 px-3 pb-3">
-           <Toolbar blocks={blocks} projectId={portfolioId} user={user}  canvasRef={canvasRef} />
+           <Toolbar blocks={blocks} projectId={portfolioId} user={user}  canvasRef={canvasRef} onSaveAs={openSaveAs} />
           
 
         </div>
@@ -117,6 +150,12 @@ export default function CanvasPage() {
           removeBlock={removeBlock}
         />
       </main>
+      <SaveAsModal
+        isOpen={isSaveAsOpen}
+        initialTitle="Copy of portfolio"
+        onClose={closeSaveAs}
+        onSave={handleSaveAs}
+      />
     </div>
 
   );

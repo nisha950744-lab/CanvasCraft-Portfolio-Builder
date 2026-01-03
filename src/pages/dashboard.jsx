@@ -15,7 +15,16 @@ export default function Dashboard() {
 
   const navigate = useNavigate();
 
+  const goToProjectList = () => {
+    navigate("/projectList");
+  };
+
   useEffect(() => {
+     const user = auth.currentUser;
+    if (!user) {
+      navigate("/login");
+      return;
+    }
       if (userId) {
         const userRef = doc(db, 'users', userId);
         const unsubscribe = onSnapshot(userRef, (docSnap) => {
@@ -75,7 +84,7 @@ export default function Dashboard() {
 
         <nav className="mt-4 space-y-1 text-sm">
           <SidebarItem icon={<FiGrid />} label="Dashboard" active />
-          <SidebarItem icon={<FiFolder />} label="Projects" />
+          <SidebarItem icon={<FiFolder />} label="Projects" onClick={goToProjectList} />
           <SidebarItem icon={<FiDownload />} label="Exports" />
           <SidebarItem icon={<FiSettings />} label="Settings" />
         </nav>
@@ -152,14 +161,17 @@ export default function Dashboard() {
   );
 }
 
-function SidebarItem({ icon, label, active }) {
+function SidebarItem({ icon, label, active,onClick }) {
   return (
     <button
+     type="button"
+      onClick={onClick}
       className={`w-full flex items-center gap-2 px-3 py-2 rounded-xl text-sm transition ${
         active
           ? "bg-slate-900 text-white"
           : "text-slate-600 hover:bg-slate-100"
       }`}
+     
     >
       <span className="text-base">{icon}</span>
       <span>{label}</span>
