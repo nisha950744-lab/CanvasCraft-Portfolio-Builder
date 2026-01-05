@@ -65,7 +65,7 @@ export function useAutosave(blocks, projectId, user) {
             updatedAt: serverTimestamp(),
             status: "draft",
           });
-          console.log("✅ Autosaved", currentBlocks?.length || 0, "blocks");
+          console.log("Autosaved", currentBlocks?.length || 0, "blocks");
         } catch (error) {
           console.error("Autosave failed:", error);
         }

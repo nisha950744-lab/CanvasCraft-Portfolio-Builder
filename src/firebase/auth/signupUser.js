@@ -56,6 +56,6 @@ export default async function signupUser(name, email, password) {
     
   } catch (error) {
     console.log("Error occurred: ", error);
-    throw error;  // Re-throw for component to catch
+    throw error;  
   }
 }
