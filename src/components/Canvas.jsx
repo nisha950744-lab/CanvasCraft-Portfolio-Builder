@@ -15,10 +15,10 @@ export default function Canvas({ blocks, updateBlock, removeBlock }) {
   });
 
   return (
-    <div ref={drop} className="relative h-full w-full overflow-auto p-4">
+    <div ref={drop} className="relative h-full w-full overflow-auto p-4  ">
       <div 
       id="canvas"
-      className="relative h-full w-full rounded-lg border border-dashed border-slate-300 bg-white/70">
+      className="relative h-full  w-full rounded-lg border border-dashed border-slate-300 bg-white/70">
         {blocks.map((block) => (
           <Rnd
             key={block.id}

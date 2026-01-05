@@ -4,6 +4,7 @@ import { BioBlock } from "./Bio";
 import { GalleryBlock } from "./Gallery";
 import { ContactBlock } from "./Contact";
 import { PublicationsBlock } from "./Publications";
+import { FooterBlock } from "./Footer";
 
 export function BlockTemplate({ block, updateBlock }) {
   const setData = (nextData) =>
@@ -23,6 +24,10 @@ export function BlockTemplate({ block, updateBlock }) {
     case "publications":
       return (
         <PublicationsBlock data={block.data} onChange={setData} />
+      )
+    case "footer":
+      return (
+        <FooterBlock data={block.data} onChange={setData} />
       );
     default:
       return null;

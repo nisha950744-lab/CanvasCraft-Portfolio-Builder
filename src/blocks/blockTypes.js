@@ -5,4 +5,5 @@ export const BLOCK_TYPES = [
   "gallery",
   "publications",
   "contact",
+  "footer"
 ];
