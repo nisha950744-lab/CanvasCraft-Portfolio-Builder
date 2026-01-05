@@ -7,10 +7,11 @@ import './index.css'
 import Login from "./pages/login";
 import Signup from "./pages/signup"; 
 import CanvasPage from "./pages/canvasPage"; 
-import Dashboard from "./pages/dashboard";
+import Dashboard from "./pages/dashboard_1.jsx";
 import UserContextProvider from "./context/UserContextProvider";
 import { FirebaseProvider } from "./firebase/context/firebase";
 import ProjectList from "./pages/projectList";
+import LandingPage from "./pages/landingPage";
 
 /*Route path="/dashboard/:userId" element={<Dashboard />} /> */
 
@@ -20,6 +21,7 @@ function App() {
     <UserContextProvider>
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/dashboard/:userId" element={<Dashboard />} />

@@ -36,12 +36,11 @@ export default function Dashboard() {
       }
   }, [userId]);
 
-
   
   const handleNewProject = async () => {
     const user = auth.currentUser;
     if (!user) {
-      navigate("/login")//  redirect to login
+      navigate("/login")// redirect to login
       return;
     }
 
@@ -53,10 +52,9 @@ export default function Dashboard() {
         title: "Untitled professor portfolio",
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
-        // initial empty canvas / blocks config
         blocks: [],
         status: "draft",
-      }); // auto‑generated doc ID[web:134][web:143]
+      }); 
 
       // go to editor for this project
       navigate(`/canvas/${docRef.id}`);
@@ -64,8 +62,6 @@ export default function Dashboard() {
       console.error("Failed to create project", err);
     }
   };
-
-
 
 
   return (

@@ -7,8 +7,7 @@ export default function SaveBtn({ blocks, projectId, user }) {
   const [isSaving, setIsSaving] = useState(false);
 
   const handleClick = async () => {
-    console.log("Save button clicked", { user, projectId, blocks });
-
+    
     if (!user || !user.uid || !projectId) {
       console.warn("Cannot save: missing user or projectId");
       return;

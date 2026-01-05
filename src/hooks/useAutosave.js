@@ -50,7 +50,7 @@ export function useAutosave(blocks, projectId, user) {
     () =>
       debounce(async (currentBlocks) => {
         if (!user || !user.uid || !projectId){
-            console.log("⛔ Skip autosave (no user or projectId)",{
+            console.log("Skip autosave (no user or projectId)",{
             user,
             projectId,
           });

@@ -18,5 +18,5 @@ export async function uploadToCloudinary(file) {
   if (!res.ok) throw new Error(data.error?.message || "Upload failed");
 
   // data.secure_url is the hosted image URL
-  return data.secure_url; // [web:520][web:529][web:523]
+  return data.secure_url; 
 }

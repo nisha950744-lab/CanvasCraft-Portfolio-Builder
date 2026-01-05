@@ -49,9 +49,9 @@ export const FirebaseProvider = ({ children }) => {
     return unsub;
   }, []);
 
-  const isLoggedIn = !!user;
+  const isLoggedIn = !!user;//!-creates a boolean and flips the value,!!-flips again
 
-  const value = { user, isLoggedIn };
+  const value = { user, isLoggedIn };//user,isLoggedIn made available to all the components
 
   console.log("FirebaseProvider value", value);
 

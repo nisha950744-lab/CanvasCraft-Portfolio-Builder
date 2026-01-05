@@ -46,7 +46,7 @@ export default function CanvasPage() {
         updatedAt: serverTimestamp(),
         blocks,           // latest canvas state
         status: "draft",
-      }); // new projectId [web:563][web:564]
+      }); // new projectId 
 
       closeSaveAs();
       navigate(`/canvas/${docRef.id}`); // open the new copy
@@ -126,9 +126,7 @@ export default function CanvasPage() {
     setBlocks((prev) => prev.filter((b) => b.id !== id));
   };
 
-  /*if (isLoading) {
-    return <div className="h-screen flex items-center justify-center">Loading…</div>;
-  }*/
+ 
 
   return (
     <div className="flex h-screen bg-gradient-to-r from-pink-500/30 to-blue-500/30 w-full">
@@ -143,7 +141,7 @@ export default function CanvasPage() {
 
       
 
-      <main ref={canvasRef} className="flex-1 bg-slate-50 overflow-auto">
+      <main ref={canvasRef} className="flex-1 bg-slate-50 overflow-auto min-h-0">
         <Canvas
           blocks={blocks}
           updateBlock={updateBlock}
@@ -160,5 +158,3 @@ export default function CanvasPage() {
 
   );
 }
-
-

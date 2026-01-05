@@ -42,12 +42,7 @@ export function GalleryBlock({ data, onChange }) {
       console.error("Cloudinary upload failed", err);
     }
   };
-  /*const handleFileChange = (id, e) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-    const url = URL.createObjectURL(file); // or Cloudinary upload, then secure_url
-    updateImage(id, url);
-  };*/
+ 
 
   return (
     <div className="space-y-2 text-xs">
@@ -57,15 +52,15 @@ export function GalleryBlock({ data, onChange }) {
           <input
             id={`gallery-input-${img.id}`}
             type="file"
-            accept="image/*"
+            accept="image/*"//accepts any image type image/png,image/jpg
             className="hidden"
             onChange={(e) => handleFileChange(img.id, e)}
           />
 
           {/* resizable image area */}
           <label
-            htmlFor={`gallery-input-${img.id}`}
-            className="relative block h-28 w-40 resize overflow-hidden rounded border border-slate-300 bg-slate-100 cursor-pointer"
+            htmlFor={`gallery-input-${img.id}`}//htmlFor links a <label> to a form element (like an input)
+            className="relative block h-28 w-40 resize overflow-auto  rounded border border-slate-300 bg-slate-100 cursor-pointer"
             style={{ minWidth: "120px", minHeight: "80px" }}
           >
             {img.url ? (
