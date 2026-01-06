@@ -27,18 +27,18 @@ Installation steps:\
 
 ## Usage guide
 1.login/signup/
-2.user is redirected to dashboard/
-3.Click on Create a new project/
-4.user is redirected to canvas page/
-5.drag blocks from library onto canvas, reorder, resize./
-6.enter text inside the assigned boxes,upload pictures from local system/
-7.changes made by user is autosaved/
-8.click on save project button to manually save the changes made/ 
-9.click on save as button to give a name to the project and save it in the projects list./
-10.If save as option is not used then the project is saved with a default name "Untitled Professor Portfolio"/
-Go to dashboard to find the project list and reopen existing projects./
-11.Click on the export HTML button to create an html page which is auto downloaded on the user's system./  
-12.The exported html file opens on any browser/
+2.user is redirected to dashboard\
+3.Click on Create a new project\
+4.user is redirected to canvas page\
+5.drag blocks from library onto canvas, reorder, resize.\
+6.enter text inside the assigned boxes,upload pictures from local system\
+7.changes made by user is autosaved\
+8.click on save project button to manually save the changes made/\
+9.click on save as button to give a name to the project and save it in the projects list.\
+10.If save as option is not used then the project is saved with a default name "Untitled Professor Portfolio"\
+Go to dashboard to find the project list and reopen existing projects.\
+11.Click on the export HTML button to create an html page which is auto downloaded on the user's system.\  
+12.The exported html file opens on any browser\
 13.The html page matches the preview.
 
 
