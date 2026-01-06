@@ -33,8 +33,8 @@ Description: drag-and-drop single-page portfolio builder with autosave and offli
 Frontend: React 
 Backend: Firebase
 Database: Firestore  (stores collection:users,subcollection:projects).
+Image upload:cloudinary
 
-Brief architecture note: how a “project” is represented in JSON and how you serialize it for export.
 
 ## Getting started (local setup)
 Prerequisites (Node version v22.21.0, npm)
@@ -71,6 +71,12 @@ users (collection)
      ├── username
      └── projects (subcollection)
          └── (document)
+                 |__blocks
+                 |__createdAt
+                 |__status
+                 |__title
+                 |__updatedAt
+
 
 ## Limitations and future work
 1.Inline WYSIWYG text editing, templates for academic portfolios, image optimization on export, undo/redo.
@@ -92,3 +98,15 @@ not done:
  templates for academic portfolios.
  snap-to-grid, accessibility checks, undo/redo, image optimization, etc.
 
+## Credits
+
+- Built by Rupkatha Saha
+- ChatGPT,perplexity PRO were used in this project
+
+# Technical summary
+
+## Tech stack and architecture
+Frontend: React\
+Backend: Firebase\
+Database: Firestore  (stores collection:users,subcollection:projects).\
+Image upload:cloudinary\
