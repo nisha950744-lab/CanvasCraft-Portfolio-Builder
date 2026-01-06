@@ -1,4 +1,3 @@
-// ProjectList.jsx
 import { useEffect, useState } from "react";
 import { collection, onSnapshot, query, orderBy } from "firebase/firestore";
 import { db, auth } from "../firebase/firebaseConfig";
@@ -34,7 +33,7 @@ export default function ProjectList() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex">
-      {/* Sidebar spacer (optional, if you share layout wrap you can remove this) */}
+     
       <aside className="hidden md:block w-64 bg-white border-r border-slate-200" />
 
       {/* Main content */}

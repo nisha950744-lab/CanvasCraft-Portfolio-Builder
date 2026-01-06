@@ -1,4 +1,3 @@
-// CanvasPage.jsx
 import { useState, useEffect,useRef } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
@@ -6,7 +5,7 @@ import Canvas from "../components/Canvas";
 import Toolbar from "../components/Toolbar";
 import { auth, db } from "../firebase/firebaseConfig.js";
 import { doc, getDoc, collection,addDoc,serverTimestamp,} from "firebase/firestore";
-import { useAutosave } from "../hooks/useAutosave"; // your autosave hook
+import { useAutosave } from "../hooks/useAutosave"; 
 import { useFirebase } from "../firebase/context/firebase";
 import SaveAsModal from "../components/SaveAsModal.jsx";
 
@@ -45,7 +44,7 @@ export default function CanvasPage() {
         updatedAt: serverTimestamp(),
         blocks,           // latest canvas state
         status: "draft",
-      }); // new projectId 
+      }); 
 
       closeSaveAs();
       navigate(`/canvas/${docRef.id}`); // open the new copy
@@ -110,7 +109,7 @@ export default function CanvasPage() {
       y: 40,
       width: 360,
       height: 220,
-      data: {}, // or defaultDataByType[type]
+      data: {},
     };
     setBlocks((prev) => [...prev, newBlock]);
   };

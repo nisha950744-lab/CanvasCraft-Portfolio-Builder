@@ -8,7 +8,6 @@ import Login from "./pages/login";
 import Signup from "./pages/signup"; 
 import CanvasPage from "./pages/canvasPage"; 
 import Dashboard from "./pages/dashboard_1.jsx";
-import UserContextProvider from "./context/UserContextProvider";
 import { FirebaseProvider } from "./firebase/context/firebase";
 import ProjectList from "./pages/projectList";
 import LandingPage from "./pages/landingPage";
@@ -18,7 +17,6 @@ import LandingPage from "./pages/landingPage";
 function App() {
   return (
     <FirebaseProvider>
-    <UserContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LandingPage />} />
@@ -36,7 +34,6 @@ function App() {
           <Route path="/projectList" element={<ProjectList />} />
         </Routes>
       </BrowserRouter>
-    </UserContextProvider>
     </FirebaseProvider>
   );
 }
