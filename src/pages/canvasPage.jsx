@@ -4,7 +4,6 @@ import { useParams,useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar.jsx";
 import Canvas from "../components/Canvas";
 import Toolbar from "../components/Toolbar";
-//import PropertiesPanel from "../components/PropertiesPanel";
 import { auth, db } from "../firebase/firebaseConfig.js";
 import { doc, getDoc, collection,addDoc,serverTimestamp,} from "firebase/firestore";
 import { useAutosave } from "../hooks/useAutosave"; // your autosave hook
@@ -31,7 +30,7 @@ export default function CanvasPage() {
 
   const closeSaveAs = () => setIsSaveAsOpen(false);
 
-    const handleSaveAs = async (title) => {
+  const handleSaveAs = async (title) => {
     const user = auth.currentUser;
     if (!user) {
       navigate("/login");

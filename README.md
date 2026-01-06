@@ -26,14 +26,14 @@ Installation steps:\
 3.Run dev server (npm run dev).
 
 ## Usage guide
-1.login/signup/
+1.login/signup\
 2.user is redirected to dashboard\
 3.Click on Create a new project\
 4.user is redirected to canvas page\
 5.drag blocks from library onto canvas, reorder, resize.\
 6.enter text inside the assigned boxes,upload pictures from local system\
 7.changes made by user is autosaved\
-8.click on save project button to manually save the changes made/\
+8.click on save project button to manually save the changes made\
 9.click on save as button to give a name to the project and save it in the projects list.\
 10.If save as option is not used then the project is saved with a default name "Untitled Professor Portfolio"\
 Go to dashboard to find the project list and reopen existing projects.\
@@ -80,8 +80,9 @@ not done:\
 
 ## Credits
 
-- Built by Rupkatha Saha\
-- ChatGPT,perplexity PRO were used in this project\
+- Built by Rupkatha Saha
+- Used MDN Docs for reading
+- ChatGPT,perplexity PRO were used in this project
 
 # Technical summary
 
@@ -91,6 +92,7 @@ CSS:CSS,Tailwind CSS
 Backend: Firebase(for all auth features like login,signup,logout;achieving project persistence through auto save,creation of project list)\
 Database: Firestore  (stores collection:users,subcollection:projects).\
 Image upload:cloudinary
+Export to HTML:
 
 ## Dependencies
 "firebase": "^12.7.0"(backend integration)\
@@ -104,4 +106,4 @@ Image upload:cloudinary
 "react-router-dom": "^7.11.0"(navigation to pages,using links,routing)
 
 ## Use of AI
-Chat GPT and perplexity PRO(for research purposes and debugging codes)
+Chat GPT and perplexity PRO(for research purposes,debugging codes,writing CSS for the pages)
