@@ -26,15 +26,16 @@ Installation steps:\
 3.Run dev server (npm run dev).
 
 ## Usage guide
-1.login/signup\
-2.user is redirected to dashboard\
-3.Click on Create a new project\
-4.user is redirected to canvas page\
-5.drag blocks from library onto canvas, reorder, resize.\
-6.enter text inside the assigned boxes,upload pictures from local system\
-7.changes made by user is autosaved\
-8.click on save project button to manually save the changes made\
-9.click on save as button to give a name to the project and save it in the projects list.\
+1. User signs up or logs in using email authentication
+2. After successful login, the user is redirected to the dashboard
+3. User clicks on "Create New Project" to start designing
+4. The user is taken to the canvas workspace
+5. Drag-and-drop blocks are added from the component library
+6. Text, images, and shapes can be resized and rearranged on canvas
+7. All changes are automatically saved in real-time
+8. User can manually save the project using the save button
+9. Project is named and stored in the user’s project list
+
 10.If save as option is not used then the project is saved with a default name "Untitled Professor Portfolio"\
 Go to dashboard to find the project list and reopen existing projects.\
 11.Click on the export HTML button to create an html page which is auto downloaded on the user's system.\  
